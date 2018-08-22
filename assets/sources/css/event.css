@@ -1,0 +1,4 @@
+.blog_bg{position: relative;top:-25px; display: table;height:200px;background: url("../img/banner.png");width: 100%;background-size: 100% 100%;}
+.blog_titulo{text-align: center;vertical-align: middle;display: table-cell;color: white;position: relative;font-size: 50px;font-family: "Times New Roman", Times, serif;}
+img.izquierda {float: left;position: relative;left: 44%;top: 20px;}
+img.derecha {float: right;position: relative;right: 44%;top: 20px;}
