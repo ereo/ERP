@@ -9,6 +9,8 @@ class Login extends CI_Controller {
             redirect(base_url().'index.php/Administrador');
         else if($this->session->userdata('rol') == 'Usuario')
         	redirect(base_url().'index.php/Usuario');
+        else if($this->session->userdata('rol') == 'Maestro')
+        	 redirect(base_url().'index.php/Administrador');
         else 
 			$this->load->view('Login_view');
 	}

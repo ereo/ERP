@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Administrador extends CI_Controller 
 {
-
+ 
 	public function __construct()
 	{
 		parent::__construct();
@@ -15,8 +15,12 @@ class Administrador extends CI_Controller
 
 	public function index()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
             $this->load->view('InicioA');
+		}
+
         else
         	redirect(base_url());	
 	}
