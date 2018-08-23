@@ -4,7 +4,7 @@ $(document).ready(function(){
 });
 
 
-function openModal(id,Nombre,Cantidad,Precio,Fecha) 
+function openModal(id,Nombre,Cantidaddescuento,Motivo,Fechainicio,Fechafin) 
 {
  let fom= '<form class="form-horizontal" action="">'
 
@@ -22,32 +22,43 @@ function openModal(id,Nombre,Cantidad,Precio,Fecha)
                         +'</div>'
 
                         +'<div class="col-md-8 col-lg-3">'
-                           +' <input type="text" id="cantidad" class="form-control" value="'+Cantidad+'" >'
+                           +' <input type="text" id="cantidad" class="form-control" value="'+Cantidaddescuento+'" >'
                         +'</div>'
 
                     +'</div>'
 
                     +'<div class="row form-group">'
                         +'<div class="col-sm-4 col-md-3 col-lg-2 text-right">'
-                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Precio: </label>'
+                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Motivo: </label>'
                        +' </div>'
 
                         +'<div class="col-md-8 col-lg-3">'
-                           +' <input type="number" id="precio" class="form-control" value="'+Precio+'" >'
+                           +' <input type="number" id="motivo" class="form-control" value="'+Motivo+'" >'
                        +' </div>'
 
                         +'<div class="col-sm-4 col-md-3 col-lg-3 text-right">'
-                           +' <label class="col-form-label mr-2 control-label">Fecha: </label>'
+                           +' <label class="col-form-label mr-2 control-label">Fecha de inicio: </label>'
                        +' </div>'
 
                            +' <div class="col-md-8 col-lg-3">'
-                           +' <input type="number" id="fecha" class="form-control" value="'+Fecha+'" >'
+                           +' <input type="number" id="fechainicio" class="form-control" value="'+Fechainicio+'" >'
                         +'</div>'
+                    +'</div>'
+
+                    +'<div class="row form-group">'
+                        +'<div class="col-sm-4 col-md-3 col-lg-2 text-right">'
+                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Fecha fin: </label>'
+                       +' </div>'
+
+                        +'<div class="col-md-8 col-lg-3">'
+                           +' <input type="number" id="fechafin" class="form-control" value="'+Fechafin+'" >'
+                       +' </div>'
+
                     +'</div>'
 
         +'</form>';
         BootstrapDialog.show({
-    title: 'Ins-'+id,
+    title: 'Promo-'+id,
     message: $(fom),
     buttons: [{
         label: 'Modificar',
@@ -60,12 +71,13 @@ function openModal(id,Nombre,Cantidad,Precio,Fecha)
         type:"POST",
         url: base_url+'Administrador/update',
         data:{
-        'type': 'updateInsumos',
+        'type': 'updatePromociones',
         'id' : id,
         'Nombre' :       $('#nombres').val(),
-        'Cantidad' :     $('#cantidad').val(),
-        'Precio' :      $('#precio').val(),
-        'Fecha' :    $('#fecha').val()
+        'Cantidaddescuento' :     $('#cantidad').val(),
+        'Motivo' :      $('#motivo').val(),
+        'Fechainicio' :    $('#fechainicio').val(),
+        'Fechafin' :    $('#fechafin').val()
         },
         success:function (data){
           BootstrapDialog.show({
@@ -102,7 +114,7 @@ function openModal(id,Nombre,Cantidad,Precio,Fecha)
         type:"POST",
         url: base_url+'Administrador/drop',
         data:{
-        'type': 'dropInsumos',
+        'type': 'dropPromociones',
         'id' : id
         },
         success:function (data){
@@ -165,22 +177,32 @@ $('#Agregar').click(function(event) {
 
                     +'<div class="row form-group">'
                         +'<div class="col-sm-4 col-md-3 col-lg-2 text-right">'
-                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Precio: </label>'
+                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Motivo: </label>'
                        +' </div>'
 
                         +'<div class="col-md-8 col-lg-3">'
-                           +' <input type="number" id="precio" class="form-control" value="" >'
+                           +' <input type="number" id="motivo" class="form-control" value="" >'
                        +' </div>'
 
                         +'<div class="col-sm-4 col-md-3 col-lg-3 text-right">'
-                           +' <label class="col-form-label mr-2 control-label">Fecha: </label>'
+                           +' <label class="col-form-label mr-2 control-label">Fecha de inicio: </label>'
                        +' </div>'
 
                            +' <div class="col-md-8 col-lg-3">'
-                           +' <input type="number" id="fecha" class="form-control" value="" >'
+                           +' <input type="number" id="fechainicio" class="form-control" value="" >'
                         +'</div>'
                     +'</div>'
 
+                    +'<div class="row form-group">'
+                        +'<div class="col-sm-4 col-md-3 col-lg-2 text-right">'
+                            +'<label class="col-form-label mr-2 control-label" id="label_ciudad">Fecha fin: </label>'
+                       +' </div>'
+
+                        +'<div class="col-md-8 col-lg-3">'
+                           +' <input type="number" id="fechafin" class="form-control" value="" >'
+                       +' </div>'
+
+                    +'</div>'
         +'</form>';
         BootstrapDialog.show({
     title: 'Nuevo Registro',
@@ -196,11 +218,12 @@ $('#Agregar').click(function(event) {
         type:"POST",
         url: base_url+'Administrador/push',
         data:{
-        'type': 'pushInsumos',
+        'type': 'pushPromociones',
         'Nombre' :       $('#nombres').val(),
-        'Cantidad' :     $('#cantidad').val(),
-        'Precio' :      $('#precio').val(),
-        'Fecha' :    $('#fecha').val()
+        'Cantidaddescuento' :     $('#cantidad').val(),
+        'Motivo' :      $('#motivo').val(),
+        'Fechainicio' :    $('#fechainicio').val(),
+        'Fechafin' :    $('#fechafin').val()
         },
         success:function (data){
           BootstrapDialog.show({
@@ -250,7 +273,7 @@ $('#Agregar').click(function(event) {
             $.each(c,function(i,item)
             {
         $('#contenido_tabla').append('<tr>'
-            +'<td><a onclick="openModal('+item.id+',\''+item.Nombre+'\',\''+item.Cantidaddescuento+'\',\''+item.Motivo+'\',\''+item.Fechainicio+'\',\''+item.Fechafin+'\')" style="cursor:pointer;">Ins-'+item.id+'</a></td>'
+            +'<td><a onclick="openModal('+item.id+',\''+item.Nombre+'\',\''+item.Cantidaddescuento+'\',\''+item.Motivo+'\',\''+item.Fechainicio+'\',\''+item.Fechafin+'\')" style="cursor:pointer;">Promo-'+item.id+'</a></td>'
             +'<td>'+item.Nombre+'</td>'
             +'<td>'+item.Cantidaddescuento+'</td>'
             +'<td>$'+item.Motivo+'.00</td>'

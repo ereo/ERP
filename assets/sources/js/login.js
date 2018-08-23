@@ -18,11 +18,11 @@ function LogIn()
       function (data)
       {
       	alert(JSON.parse(data).msg);
-          
+
       	if (JSON.parse(data).user == 'Administrador') 
       	{window.location = `${base_url}Administrador`;}
-      	else if(JSON.parse(data).user == 'Maestro')
-      	{window.location = `${base_url}Administrador`;}
+      	else if(JSON.parse(data).user == 'Usuario')
+      	{window.location = `${base_url}Usuario`;}
         
      });
 }

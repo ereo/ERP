@@ -3,24 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Administrador extends CI_Controller 
 {
- 
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model("Empleados_model");
 		$this->load->model('Alumnos_model');
 		$this->load->model('Insumos_model');
-		//$this->load->model("Restaurant/ContactoModel");
+		$this->load->model('Promociones_model');
+		$this->load->model('Eventos_model');
 	}
 
 	public function index()
 	{
-		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
-            $data['rol'] = $this->session->userdata('rol');		
-            $this->load->view('Global/AsideLeft',$data);
+		if($this->session->userdata('rol') == 'Administrador')
             $this->load->view('InicioA');
-		}
-
         else
         	redirect(base_url());	
 	}
@@ -56,6 +53,7 @@ class Administrador extends CI_Controller
         else
         	redirect(base_url());	
 	}
+
 	public function Promociones()
 	{
 		if($this->session->userdata('rol') == 'Administrador')
@@ -64,6 +62,13 @@ class Administrador extends CI_Controller
         	redirect(base_url());	
 	}
 
+	public function Eventos()
+	{
+		if($this->session->userdata('rol') == 'Administrador')
+            $this->load->view('Eventos_view');
+        else
+        	redirect(base_url());	
+	}
 	#-------------------------
 	public function push()
 	{
@@ -111,6 +116,29 @@ class Administrador extends CI_Controller
 			);
 			$this->Insumos_model->pushInsumos($queryInventario);
 			echo $complete;
+		break;
+		case 'pushPromociones':
+        	$queryInventario = array(
+			'Nombre' => $this->input->post('Nombre'),
+			'Cantidaddescuento' => $this->input->post('Cantidaddescuento'),
+			'Motivo' => $this->input->post('Motivo'),
+			'Fechainicio' => $this->input->post('Fechainicio'),
+			'Fechafin' => $this->input->post('Fechafin'),
+			'status' => 1
+			);
+			$this->Promociones_model->pushPromociones($queryInventario);
+			echo $complete;
+		break;
+		case 'pushEventos':
+        	$queryInventario = array(
+			'Nombre' => $this->input->post('Nombre'),
+			'Descripcion' => $this->input->post('Descripcion'),
+			'Fechainicial' => $this->input->post('Fechainicial'),
+			'Fechafinal' => $this->input->post('Fechafinal'),
+			'status' => 1
+			);
+			$this->Promociones_model->pushPromociones($queryInventario);
+			echo $complete;
         break;
 		}
 	}
@@ -132,6 +160,10 @@ class Administrador extends CI_Controller
 		break;
 		case 'getPromociones':
 			$result = $this->Promociones_model->getPromociones();
+    		echo json_encode($result);
+		break;
+		case 'getEventos':
+			$result = $this->Eventos_model->getEventos();
     		echo json_encode($result);
         break;
 		}
@@ -182,6 +214,17 @@ class Administrador extends CI_Controller
 			$this->Insumos_model->updateInsumos($this->input->post('id'),$queryInsumos);
 			echo $complete;
 		break;
+		case 'updatePromociones':
+		$queryInsumos = array(
+			'Nombre' => $this->input->post('Nombre'),
+			'Cantidaddescuento' => $this->input->post('Cantidaddescuento'),
+			'Motivo' => $this->input->post('Motivo'),
+			'Fechainicio' => $this->input->post('Fechainicio'),
+			'Fechafin' => $this->input->post('Fechafin')
+			);
+			$this->Promociones_model->updatePromociones($this->input->post('id'),$queryInsumos);
+			echo $complete;
+		break;
 		}
 	
 
@@ -207,6 +250,10 @@ class Administrador extends CI_Controller
 		break;
 		case 'dropInsumos':
         	$this->Insumos_model->dropInsumos($this->input->post('id'));
+			echo $complete;
+		break;
+		case 'dropPromociones':
+        	$this->Promociones_model->dropPromociones($this->input->post('id'));
 			echo $complete;
         break;
 		}
