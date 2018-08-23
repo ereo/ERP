@@ -22,7 +22,7 @@ class Administrador extends CI_Controller
             $this->load->view('InicioA');
 		}
         else
-        	redirect(base_url();	
+        	redirect(base_url());	
 	}
 
 	public function Error404()
