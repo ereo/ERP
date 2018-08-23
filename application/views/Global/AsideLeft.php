@@ -2,7 +2,7 @@
 
     <a href="<?php echo base_url();?>" class="logo" style="background:#5396E1;">
 
-      <span class="logo-mini"><b><img src="<?php echo base_url('assets/sources/iconos/herramientas.png');?>" width="30" height="30" ></b></span>
+      <span class="logo-mini" style="margin-top: 12px ;"><b><img src="<?php echo base_url('assets/sources/iconos/herramientas.png');?>" width="30" height="30" ></b></span>
       
         <span class="logo-lg"><b><?php echo $rol ?></b></span>
       
@@ -64,6 +64,14 @@
                 <li class="">
          <a href="<?php echo base_url('index.php/Administrador/Eventos');?>">
            <img src="<?php echo base_url('assets/sources/iconos/calendario.png');?>" width="20" height="20"><span style="padding-left: 8px; color: #000000;">Eventos</span>
+          </a>
+        </li>
+      <?php }?>
+
+      <?php if($rol == 'Administrador' || $rol == 'Maestro') { ?>
+          <li class="">
+         <a href="<?php echo base_url('index.php/Administrador/Horario');?>">
+           <img src="<?php echo base_url('assets/sources/iconos/horario.png');?>" width="20" height="20"><span style="padding-left: 8px; color: #000000;">Horario</span>
           </a>
         </li>
       <?php }?>

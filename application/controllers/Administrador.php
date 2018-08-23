@@ -36,40 +36,60 @@ class Administrador extends CI_Controller
 
 	public function Alumnos()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
-            $this->load->view('Alumnos_view');
-        else
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+			$this->load->view('Global/AsideLeft',$data);
+			$this->load->view('Alumnos_view');
+		}else
         	redirect(base_url());	
 	}
 
 	public function Empleados()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
             $this->load->view('Empleados_view');
-        else
+		}else
         	redirect(base_url());	
 	}
 	public function Insumos()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
             $this->load->view('Insumos_view');
-        else
+		}else
         	redirect(base_url());	
 	}
 
 	public function Promociones()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
             $this->load->view('Promociones_view');
-        else
+		}else
         	redirect(base_url());	
 	}
 
 	public function Eventos()
 	{
-		if($this->session->userdata('rol') == 'Administrador')
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
             $this->load->view('Eventos_view');
-        else
+		}else
+        	redirect(base_url());	
+	}
+
+	public function Horario()
+	{
+		if($this->session->userdata('rol') == 'Administrador' || $this->session->userdata('rol') == 'Maestro' || $this->session->userdata('rol') == 'Recepcionista'){
+            $data['rol'] = $this->session->userdata('rol');		
+            $this->load->view('Global/AsideLeft',$data);
+            $this->load->view('Horario_view');
+		}else
         	redirect(base_url());	
 	}
 	#-------------------------
