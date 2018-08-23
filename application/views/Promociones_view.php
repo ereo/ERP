@@ -5,7 +5,7 @@
 <div class="content-wrapper" style="background: white;">
 
   <section class="content-header">
-    <h1>Alumnos<small></small></h1>
+    <h1>Promociones<small></small></h1>
   </section>
 
 
@@ -24,8 +24,10 @@
                                         <tr>
                                           <th>Matricula</th>
                                             <th>Nombre</th>
-                                            <th>Telefono</th>
-                                            <th>Direccion</th>
+                                            <th>Cantidad de descuento</th>
+                                            <th>Motivo</th>
+                                            <th>Fecha de inicio</th>
+                                            <th>Fecha de finalizacion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="contenido_tabla">
@@ -43,4 +45,4 @@
 <?php $this->load->view('Global/AsideRight');?>
 <?php $this->load->view('Global/Footer');?>
 <script src="<?php echo base_url();?>assets/sources/js/jquery-1.11.3.min.js"></script>
-<script src="<?php echo base_url();?>assets/sources/js/Alumnos.js"></script>
+<script src="<?php echo base_url();?>assets/sources/js/Promociones.js"></script>

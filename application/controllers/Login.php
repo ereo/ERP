@@ -7,10 +7,8 @@ class Login extends CI_Controller {
 	{
 		if($this->session->userdata('rol') == 'Administrador')
             redirect(base_url().'index.php/Administrador');
-        else if($this->session->userdata('rol') == 'Usuario')
-        	redirect(base_url().'index.php/Usuario');
-        else if($this->session->userdata('rol') == 'Maestro')
-        	 redirect(base_url().'index.php/Administrador');
+        else if($this->session->userdata('rol') == 'Recepcionista')
+        	redirect(base_url().'index.php/Recepcionista');
         else 
 			$this->load->view('Login_view');
 	}
