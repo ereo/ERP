@@ -20,7 +20,9 @@ class Administrador extends CI_Controller
             $data['rol'] = $this->session->userdata('rol');		
             $this->load->view('Global/AsideLeft',$data);
             $this->load->view('InicioA');
-		}	
+		}
+        else
+        	redirect(base_url();	
 	}
 
 	public function Error404()
