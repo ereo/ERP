@@ -19,10 +19,8 @@ function LogIn()
       {
       	alert(JSON.parse(data).msg);
 
-      	if (JSON.parse(data).user == 'Administrador') 
+      	if (JSON.parse(data).user) 
       	{window.location = `${base_url}Administrador`;}
-      	else if(JSON.parse(data).user == 'Usuario')
-      	{window.location = `${base_url}Usuario`;}
         
      });
 }
